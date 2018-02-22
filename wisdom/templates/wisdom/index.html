@@ -1,5 +1,186 @@
 {% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href={% static 'wisdom/style.css' %}>
 
-{{ notifications }}
+    <title>Wisdom Initiatives</title>
+</head>
+<body>
+<div class="navbar">
+		  <span>
+		  	<img src="{% static  'wisdom/img/wisdomstraight.png' %}">
+		  </span>
+    <span class="ham">
+		  	<i class="fas fa-bars fa-2x"></i>
+		  </span>
+</div>
+<div class="section-1">
+    <div id="zeal-highlights" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#zeal-highlights" data-slide-to="0" class="active"></li>
+            <li data-target="#zeal-highlights" data-slide-to="1"></li>
+            <li data-target="#zeal-highlights" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="carousel-img " src = {% static  'wisdom/img/c4.jpg' %} alt="First slide">
+                <div class="carousel-caption ">
+                    <h3>JOIN US NOW</h3>
+                    <p>Have you ever thought of spending time in the service of humanity? Do you dream of bringing changes to society? If the answer is “yes”, you are the right person we, at Wisdom, are looking for.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="carousel-img " src = {% static  'wisdom/img/c2.jpg' %} alt="Second slide">
+                <div class="carousel-caption">
+                    <h3>JOIN US NOW</h3>
+                    <p>Have you ever thought of spending time in the service of humanity? Do you dream of bringing changes to society? If the answer is “yes”, you are the right person we, at Wisdom, are looking for.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="carousel-img " src = {% static  'wisdom/img/c1.jpg' %} alt="Third slide">
+                <div class="carousel-caption">
+                    <h3>JOIN US NOW</h3>
+                    <p>Have you ever thought of spending time in the service of humanity? Do you dream of bringing changes to society? If the answer is “yes”, you are the right person we, at Wisdom, are looking for.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="carousel-img " src =  {% static  'wisdom/img/c3.jpg' %} alt="Third slide">
+                <div class="carousel-caption">
+                    <h3>JOIN US NOW</h3>
+                    <p>Have you ever thought of spending time in the service of humanity? Do you dream of bringing changes to society? If the answer is “yes”, you are the right person we, at Wisdom, are looking for.</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#zeal-highlights" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#zeal-highlights" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <div class="latest">
+        <h3>Latest news</h3>
+        <div class="item">
+            <i class="fab fa-accusoft"></i>
+            <div class="content">
+                Blah Blah me too haha
+            </div>
+        </div>
+        <div class="item">
+            <i class="fab fa-accusoft"></i>
+            <div class="content">
+                Blah Blah me too haha
+            </div>
+        </div>
+        <div class="item">
+            <i class="fab fa-accusoft"></i>
+            <div class="content">
+                Blah Blah me too haha
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section-2">
+    <div class="find-campain">
+        <div class="box">
+            <div class="container-1">
+                <span class="icon"><i class="fa fa-search"></i></span>
+                <input type="search" id="search" placeholder="Find campaings near you.." />
+            </div>
+        </div>
+    </div>
 
-{{ services }}
+</div>
+<div class="section-3">
+    <h3>Mentors</h3>
+    <div class="mentor">
+        <div class="img">
+            <img src={% static  'wisdom/img/sreenivasan.jpg' %} alt="">
+        </div>
+        <div class="data">
+            <div class="name">Mr. T.P. Sreenivasan IFS</div>
+            <div class="desig">( Former Indian Ambassador )</div>
+            <div class="des">
+                T.P. Sreenivasan is a former Permanent Representative  of India to the United Nations,
+                Vienna and Governor for India of the International...
+            </div>
+        </div>
+    </div>
+    <div class="mentor">
+        <div class="img">
+            <img src={% static  'wisdom/img/sreenivasan.jpg' %} alt="">
+        </div>
+        <div class="data">
+            <div class="name">Mr. T.P. Sreenivasan IFS</div>
+            <div class="desig">( Former Indian Ambassador )</div>
+            <div class="des">
+                T.P. Sreenivasan is a former Permanent Representative  of India to the United Nations,
+                Vienna and Governor for India of the International...
+            </div>
+        </div>
+    </div>
+    <div class="mentor">
+        <div class="img">
+            <img src={% static  'wisdom/img/sreenivasan.jpg' %} alt="">
+        </div>
+        <div class="data">
+            <div class="name">Mr. T.P. Sreenivasan IFS</div>
+            <div class="desig">( Former Indian Ambassador )</div>
+            <div class="des">
+                T.P. Sreenivasan is a former Permanent Representative  of India to the United Nations,
+                Vienna and Governor for India of the International...
+            </div>
+        </div>
+    </div>
+    <div class="mentor">
+        <div class="img">
+            <img src={% static  'wisdom/img/sreenivasan.jpg' %} alt="">
+        </div>
+        <div class="data">
+            <div class="name">Mr. T.P. Sreenivasan IFS</div>
+            <div class="desig">( Former Indian Ambassador )</div>
+            <div class="des">
+                T.P. Sreenivasan is a former Permanent Representative  of India to the United Nations,
+                Vienna and Governor for India of the International...
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section-4">
+    <div class="footer">
+        <div class="colomn-1">
+            <h5>About us</h5>
+            <ul>
+                <p>Be Involved and Contribute your time for a better tomorrow.</p>
+                <li>contact@ritu18.com</li>
+                <li>Call us: +91 9445467323</li>
+            </ul>
+        </div>
+        <div class="colomn-2">
+            <h5>NewsRoom</h5>
+            <ul>
+                <li>Press Release</li>
+                <li>Official Statements</li>
+                <li>Blog and News</li>
+                <li>Features</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script {% static  'wisdom/my.js' %}></script>
+</body>
+</html>
+
+<!--{{ notifications }}-->
+
+<!--{{ services }}-->
