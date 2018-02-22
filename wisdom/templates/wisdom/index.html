@@ -4,14 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css" />
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href={% static 'wisdom/style.css' %}>
 
     <title>Wisdom Initiatives</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light ">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="#"><img src="img/wisdomstraight.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -28,6 +29,7 @@
             <li data-target="#zeal-highlights" data-slide-to="0" class="active"></li>
             <li data-target="#zeal-highlights" data-slide-to="1"></li>
             <li data-target="#zeal-highlights" data-slide-to="2"></li>
+            <li data-target="#zeal-highlights" data-slide-to="3"></li>
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -81,29 +83,20 @@
             </a>
         {% endfor %}
     </div>
-{#        <div class="item">#}
-{#            <i class="fab fa-accusoft"></i>#}
-{#            <div class="content">#}
-{#                Blah Blah me too haha#}
-{#            </div>#}
-{#        </div>#}
-{#        <div class="item">#}
-{#            <i class="fab fa-accusoft"></i>#}
-{#            <div class="content">#}
-{#                Blah Blah me too haha#}
-{#            </div>#}
-{#        </div>#}
-    </div>
 </div>
 <div class="section-2">
-    <div class="find-campain">
-        <div class="box">
+    <!-- <div class="find-campaign"> -->
+        <div class="searchbox">
+            <span class="icon"><i class="fa fa-search"></i></span>
+            <input type="search" id="search" placeholder="Find campaigns near you.." />
+        </div>
+        <!-- <div class="box">
             <div class="container-1">
                 <span class="icon"><i class="fa fa-search"></i></span>
                 <input type="search" id="search" placeholder="Find campaings near you.." />
             </div>
-        </div>
-    </div>
+        </div> -->
+    <!-- </div> -->
 
 </div>
 <div class="section-3">
