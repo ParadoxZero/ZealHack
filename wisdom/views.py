@@ -76,14 +76,6 @@ class Index(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(Index, self).get_context_data(**kwargs)
-        context['notifications'] = [{
-            'date': i.date,
-            'text': i.text,
-            'url': i.url
-        } for i in Notifications.get_latest_notifications()]
-        context['services'] = [{
-            'name': i.name,
-            'description': i.description,
-            'image': i.image
-        } for i in Service.objects.all()]
+        context['notifications'] = [i for i in Notifications.get_latest_notifications()]
+        context['services'] = [i for i in Service.objects.all()]
         return context
