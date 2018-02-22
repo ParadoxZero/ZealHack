@@ -85,20 +85,22 @@ def post_review(request):
 
 def get_nearest_locations(request):
     latitude = request.POST['latitude']
-    longitude = request.POST['longitudes']
+    longitude = request.POST['longitude']
 
     location_list = Location.objects.all()
-    destination_list = [[i.latitude, i.longitude] for i in location_list]
-    result = map_client.distance_matrix(origins=[[latitude, longitude], ], destinations=destination_list)
+    destination_list = [[i.longitude, i.latitude] for i in location_list]
+    print(latitude,longitude,destination_list)
+    result = map_client.distance_matrix(origins=[[longitude, latitude], ], destinations=destination_list)
+    print(result['rows'][0]['elements'])
     context = []
     for i in range(len(location_list)):
         context.append({
-            'name': location_list[i].name,
+            'location': location_list[i],
             'distance': result['rows'][0]['elements'][i]['distance']['text'],
             'coordinates': [location_list[i].latitude, location_list[i].longitude]
         })
     context.sort(key=sort_key)
-    return JsonResponse(data={
+    return render(request,"wisdom/search_results.html",{
         "status": 'ok',
         'locations': context[:10]
     })
@@ -106,7 +108,7 @@ def get_nearest_locations(request):
 
 def get_nearest_locations_service(request, slug):
     latitude = request.POST['latitude']
-    longitude = request.POST['longitudes']
+    longitude = request.POST['longitude']
 
     location_list = Location.objects.filter(service__initiative=initiative_slug[slug])
     destination_list = [[i.latitude, i.longitude] for i in location_list]

@@ -4,15 +4,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css" />
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href={% static 'wisdom/style.css' %}>
 
     <title>Wisdom Initiatives</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light ">
-    <a class="navbar-brand" href="http://127.0.0.1:8000"><img src="{% static 'wisdom/img/wisdomstraight.png' %}"></a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#"><img src= {% static "wisdom/img/wisdomstraight.png" %}></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -31,6 +32,7 @@
             <li data-target="#zeal-highlights" data-slide-to="0" class="active"></li>
             <li data-target="#zeal-highlights" data-slide-to="1"></li>
             <li data-target="#zeal-highlights" data-slide-to="2"></li>
+            <li data-target="#zeal-highlights" data-slide-to="3"></li>
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -84,29 +86,27 @@
             </a>
         {% endfor %}
     </div>
-{#        <div class="item">#}
-{#            <i class="fab fa-accusoft"></i>#}
-{#            <div class="content">#}
-{#                Blah Blah me too haha#}
-{#            </div>#}
-{#        </div>#}
-{#        <div class="item">#}
-{#            <i class="fab fa-accusoft"></i>#}
-{#            <div class="content">#}
-{#                Blah Blah me too haha#}
-{#            </div>#}
-{#        </div>#}
-    </div>
 </div>
 <div class="section-2">
-    <div class="find-campain">
-        <div class="box">
+    <!-- <div class="find-campaign"> -->
+        <div class="searchbox">
+            <span class="icon"><i class="fa fa-search"></i></span>
+            <input type="search" id="search" placeholder="Find campaigns near you.." />
+            <span class="icon" id="closesearch"><i class="fa fa-search"></i></span>
+        </div>
+        <div id="map"></div>
+        <form id="location" action= {% url 'get_nearest_locations' %} method="post" onsubmit="return search();">
+            {% csrf_token %}
+            <input type="text" style="display: none" name="latitude" id="lat">
+            <input type="text" style="display: none" name="longitude" id="long">
+        </form>
+        <!-- <div class="box">
             <div class="container-1">
                 <span class="icon"><i class="fa fa-search"></i></span>
                 <input type="search" id="search" placeholder="Find campaings near you.." />
             </div>
-        </div>
-    </div>
+        </div> -->
+    <!-- </div> -->
 
 </div>
 <div class="section-3">
@@ -189,6 +189,83 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="{% static  'wisdom/my.js' %}"></script>
+<script>
+        var x,y;
+        function isValid() {
+            if(isFinite(x)&&isFinite(y))
+                return true;
+            else {
+                alert("Location not set");
+                return false;
+            }
+        }
+        function initAutocomplete() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: -33.8688, lng: 151.2195},
+                zoom: 13,
+                mapTypeId: 'roadmap'
+            });
+            // Create the search box and link it to the UI element.
+            var input = document.getElementById('search');
+            var searchBox = new google.maps.places.SearchBox(input);
+            map.controls.push(input);
+            // Bias the SearchBox results towards current map's viewport.
+            map.addListener('bounds_changed', function() {
+                searchBox.setBounds(map.getBounds());
+            });
+            var markers = [];
+            // Listen for the event fired when the user selects a prediction and retrieve
+            // more details for that place.
+            searchBox.addListener('places_changed', function() {
+                var places = searchBox.getPlaces();
+                if (places.length == 0) {
+                    return;
+                }
+                // Clear out the old markers.
+                markers.forEach(function(marker) {
+                    marker.setMap(null);
+                });
+                markers = [];
+                // For each place, get the icon, name and location.
+                var bounds = new google.maps.LatLngBounds();
+                places.forEach(function(place) {
+                    if (!place.geometry) {
+                        console.log("Returned place contains no geometry");
+                        return;
+                    }
+                    var icon = {
+                        url: place.icon,
+                        size: new google.maps.Size(71, 71),
+                        origin: new google.maps.Point(0, 0),
+                        anchor: new google.maps.Point(17, 34),
+                        scaledSize: new google.maps.Size(25, 25)
+                    };
+                    // Create a marker for each place.
+                    markers.push(new google.maps.Marker({
+                        map: map,
+                        icon: icon,
+                        title: place.name,
+                        position: place.geometry.location
+                    }));
+                    if (place.geometry.viewport) {
+                        // Only geocodes have viewport.
+                        bounds.union(place.geometry.viewport);
+                    } else {
+                        bounds.extend(place.geometry.location);
+                    }
+                });
+                map.fitBounds(bounds);
+                x = (bounds.b.b+bounds.b.f)/2;
+                y = (bounds.f.b+bounds.f.f)/2;
+                document.getElementById('lat').value = x;
+                document.getElementById('long').value = y;
+                isValid()?document.getElementById('location').submit():document.getElementById('search').value='';
+                console.log(x);
+            });
+        }
+    </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUDhC1Edx-S5oUQmr8u9m7rr0ul5bXG3M&libraries=places&callback=initAutocomplete"
+        async defer></script>
 </body>
 </html>
 
