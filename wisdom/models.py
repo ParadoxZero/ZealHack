@@ -30,7 +30,7 @@ class Rating(models.Model):
     rating = models.DecimalField(max_digits=1, decimal_places=0)
     review = models.TextField()
 
-    location = models.ForeignKey(Location)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.email
