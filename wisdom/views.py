@@ -149,8 +149,10 @@ class ServiceDetails(TemplateView):
         except Service.DoesNotExist:
             raise Http404
         location_list = Location.objects.filter(service=service)
+        image_list = ServiceImage.objects.filter(service=service)
         context['service'] = service
         context['location_list'] = location_list
+        context['image_list'] = image_list
         return context
 
 

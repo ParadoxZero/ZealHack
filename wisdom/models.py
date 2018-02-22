@@ -13,9 +13,9 @@ class Service(models.Model):
         EMERGENCY_RESPONSE = "r"
 
         CHOICES = (
-            (SOCIAL_SERVICE,"Social Service"),
-            (EDUCATION,"Education"),
-            (HEALTHCARE,"Healthcare"),
+            (SOCIAL_SERVICE, "Social Service"),
+            (EDUCATION, "Education"),
+            (HEALTHCARE, "Healthcare"),
             (INFRASTRUCTURE, "Infrastructure"),
             (EMERGENCY_RESPONSE, "Emergency Response")
 
@@ -24,11 +24,15 @@ class Service(models.Model):
     initiative = models.CharField(choices=Initiatives.CHOICES, max_length=10)
     name = models.CharField(max_length=255)
     description = models.TextField()
-    image = models.ImageField()
     slug = models.SlugField()
 
     def __str__(self):
         return self.name
+
+
+class ServiceImage(models.Model):
+    image = models.ImageField()
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)
 
 
 class Location(models.Model):
