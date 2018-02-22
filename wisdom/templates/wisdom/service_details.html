@@ -12,7 +12,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light ">
-    <a class="navbar-brand" href="http://127.0.0.1:8000"><img src="{% static 'wisdom/img/wisdomstraight.png' %}"></a>
+    <a class="navbar-brand" href="/"><img src="{% static 'wisdom/img/wisdomstraight.png' %}"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,6 +28,11 @@
 <div class="section-1">
     <div class="title">
         <h3>{{ service.name }}</h3>
+        <div class="searchbox">
+            <span class="icon"><i class="fa fa-search"></i></span>
+            <input type="search" id="search" placeholder="Find {{ service.name }} near you..." />
+            <span class="icon" id="closesearch"><i class="fa fa-search"></i></span>
+        </div>
     </div>
     <div class="imgs">
         <div id="zeal-highlights" class="carousel slide" data-ride="carousel">
@@ -109,11 +114,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
         <div id="openModal" class="modalDialog">
             <div class="content">
                 <a href="#close" title="Close" class="close">X</a>
@@ -127,6 +127,9 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="{% static 'wisdom/single-service.js' %}"></script>
+<script src="{% static  'wisdom/js/map.js' %}"></script>
+
 </body>
 <script>
     console.log($($(".carousel-item")[0]).addClass(" active"));
