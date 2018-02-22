@@ -1,0 +1,5 @@
+{% for i in locations %}
+{{ i.location.name }} <br>
+    {{ i.distance }} <Br>
+    {% url 'initiative_service_list'  i.location.service.slug %}
+{% endfor %}
