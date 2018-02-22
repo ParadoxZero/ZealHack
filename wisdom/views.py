@@ -157,7 +157,7 @@ class ServiceDetails(TemplateView):
 
 
 class InitiativeServiceList(TemplateView):
-    template_name = 'wisdom/initiative_list.html'
+    template_name = 'wisdom/service-list.html'
 
     def get_context_data(self, **kwargs):
         context = super(InitiativeServiceList, self).get_context_data(**kwargs)
