@@ -12,7 +12,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light ">
-    <a class="navbar-brand" href="#"><img src="{% static 'wisdom/img/wisdomstraight.png' %}"></a>
+    <a class="navbar-brand" href="http://127.0.0.1:8000"><img src="{% static 'wisdom/img/wisdomstraight.png' %}"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -73,6 +73,14 @@
             <option value="{{ i.name }} ">{{ i.name }} </option>
             {% endfor %}
         </select>
+        <div class="rating">
+            <p>Please rate:</p>
+            <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+            <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+        </div>
         <textarea name="comment" id="comment" cols="40" rows="5" placeholder="Enter your comments"></textarea>
         <input type="submit">
 
