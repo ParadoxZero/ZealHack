@@ -222,3 +222,26 @@ input[type=submit]{
 .content h4{
         padding: 1em 0;
 }
+/*search box*/
+.searchbox {
+    margin: 2em 1em;
+    border-radius: 5px;
+    background-color: #2b303b;
+    color: #63717f;
+    padding: 10px;
+}
+.searchbox:hover {
+    background-color: rgba(0, 0, 0, 0.07);
+}
+.searchbox input, .searchbox input:hover {
+    width:80%;
+    outline: none;
+    background-color: transparent;
+    border: none;
+}
+#search {
+    color: white;
+}
+#search:hover {
+    color: black;
+}
