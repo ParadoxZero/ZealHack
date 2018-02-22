@@ -1,0 +1,7 @@
+{% for i in service_list %}
+    {{ i.service.name }}<br>
+    {{i.service.description}}<br>
+    {% for j in i.images %}
+        <img src="{{ j.image.url }}">
+    {% endfor %}
+{% endfor %}

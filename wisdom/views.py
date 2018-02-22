@@ -157,7 +157,7 @@ class ServiceDetails(TemplateView):
 
 
 class InitiativeServiceList(TemplateView):
-    template_name = 'wisdom/service-list.html'
+    template_name = 'wisdom/initiative_list.html'
 
     def get_context_data(self, **kwargs):
         context = super(InitiativeServiceList, self).get_context_data(**kwargs)
@@ -165,5 +165,9 @@ class InitiativeServiceList(TemplateView):
             service_list = Service.objects.filter(initiative=initiative_slug[kwargs['initiative_slug']])
         except KeyError:
             raise Http404
-        context['service_list'] = service_list
+
+        context['service_list'] = [{
+            'service':i,
+            'images': [j for j in ServiceImage.objects.filter(service=i)]
+        }for i in service_list]
         return context
