@@ -85,7 +85,7 @@ def post_review(request):
 
 def get_nearest_locations(request):
     latitude = request.POST['latitude']
-    longitude = request.POST['longitudes']
+    longitude = request.POST['longitude']
 
     location_list = Location.objects.all()
     destination_list = [[i.latitude, i.longitude] for i in location_list]
@@ -106,7 +106,7 @@ def get_nearest_locations(request):
 
 def get_nearest_locations_service(request, slug):
     latitude = request.POST['latitude']
-    longitude = request.POST['longitudes']
+    longitude = request.POST['longitude']
 
     location_list = Location.objects.filter(service__initiative=initiative_slug[slug])
     destination_list = [[i.latitude, i.longitude] for i in location_list]

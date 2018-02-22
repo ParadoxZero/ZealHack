@@ -68,6 +68,12 @@ body{
     background-color: transparent;
     border: none;
 }
+#search {
+    color: white;
+}
+#search:hover {
+    color: black;
+}
 /*search bar*/
 .section-2{
     /* width: 90vw; */
