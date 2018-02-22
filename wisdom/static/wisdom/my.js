@@ -1,4 +1,10 @@
+
 $(document).ready(function () {
+    setTimeout(function () {
+        $('.preloader').fadeOut('slow');
+    },2000);
+
+
     $('.carousel').carousel({
         interval:2000,
         pause:"hover",
