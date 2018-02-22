@@ -20,9 +20,9 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-item nav-link active" href="{% url 'initiative_service_list' 'health' %}">Health <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link active" href="#">Social-service <span class="sr-only"></span></a>
-            <a class="nav-item nav-link active" href="#">Education <span class="sr-only"></span></a>
-            <a class="nav-item nav-link active" href="#">Infrastructure <span class="sr-only"></span></a>
+            <a class="nav-item nav-link active" href="{% url 'initiative_service_list' 'social-service' %}">Social-service <span class="sr-only"></span></a>
+            <a class="nav-item nav-link active" href="{% url 'initiative_service_list' 'education' %}">Education <span class="sr-only"></span></a>
+            <a class="nav-item nav-link active" href="{% url 'initiative_service_list' 'infrastructure' %}">Infrastructure <span class="sr-only"></span></a>
         </div>
     </div>
 </nav>
