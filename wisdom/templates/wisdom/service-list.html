@@ -11,28 +11,31 @@
 
 </head>
 <body>
-<div class="navbar">
-      <span>
-        <img src="{% static  'wisdom/img/wisdomstraight.png' %}">
-      </span>
-    <span class="ham">
-        <i class="fas fa-bars fa-2x"></i>
-    </span>
-</div>
+<nav class="navbar navbar-expand-lg navbar-light ">
+    <a class="navbar-brand" href="#"><img src="img/wisdomstraight.png"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+        </div>
+    </div>
+</nav>
+
 <div class="section-1">
     <h3>Initiatives</h3>
+    <div>
     {% for i in service_list %}
         <div class="item">
             <div class="desc">
                 <h5>{{ i.name }}</h5>
             </div>
-            <div class="img">
-                <img class="back-img" src="{% static 'wisdom/img/card.png' %}" alt="">
-                <img class="main-img" src="{% static 'wisdom/img/punalur-hindustan-hospital-special-district-received-october_59d0aa0e-b038-11e7-839f-5e4b0d653fbd.jpg' %}" alt="">
-            </div>
+            <img class="back-img" src="{% static 'wisdom/img/card.png' %}" alt="">
+            <img class="main-img" src="{% static 'wisdom/img/punalur-hindustan-hospital-special-district-received-october_59d0aa0e-b038-11e7-839f-5e4b0d653fbd.jpg' %}"  alt="">
         </div>
     {% endfor %}
-
+    </div>
 </div>
 <div class="section-4">
     <div class="footer">

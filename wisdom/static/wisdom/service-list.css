@@ -9,14 +9,11 @@ body{
 .navbar{
     list-style-type: none;
     margin: 0;
-    background-color: #09262C;
     color: white;
+    background-color: #00000078;
 }
-.navbar span img{
+.navbar a img{
     width: 50%;
-}
-.ham{
-    padding-right: 1em;
 }
 /*section-1*/
 .section-1{
