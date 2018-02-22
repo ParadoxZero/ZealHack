@@ -70,7 +70,7 @@
         <input type="email" name="email" placeholder="Enter your email">
         <select name="location" id="location">
             {% for i in location_list %}
-            <option value="{{ i.name }} ">{{ i.name }} </option>
+            <option value="{{ i.location.name }} ">{{ i.location.name }} </option>
             {% endfor %}
         </select>
         <fieldset class="rating">

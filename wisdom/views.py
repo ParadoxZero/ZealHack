@@ -151,7 +151,11 @@ class ServiceDetails(TemplateView):
         location_list = Location.objects.filter(service=service)
         image_list = ServiceImage.objects.filter(service=service)
         context['service'] = service
-        context['location_list'] = location_list
+        context['location_list'] = [{
+            'location': i,
+            'average_rating': (lambda x: ((sum(x) / len(x)) if len(x) != 0 else None))(
+                [j.rating for j in Rating.objects.filter(location=i)])
+        } for i in location_list]
         context['image_list'] = image_list
         return context
 
@@ -167,7 +171,7 @@ class InitiativeServiceList(TemplateView):
             raise Http404
 
         context['service_list'] = [{
-            'service':i,
+            'service': i,
             'images': [j for j in ServiceImage.objects.filter(service=i)]
-        }for i in service_list]
+        } for i in service_list]
         return context
