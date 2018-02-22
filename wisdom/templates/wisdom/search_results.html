@@ -38,7 +38,7 @@
             <div class="card">
             <h5>Location : <b>{{ i.location.name }}</b> </h5>
             <h5>Distance : <b>{{ i.distance }}</b></h5>
-            <a href="{% url 'initiative_service_list'  i.location.service.slug %}"> Link to the service</a>
+            <a href="{% url 'service_details'  i.location.service.slug %}"> Link to the service</a>
             </div>
         {% endfor %}
 

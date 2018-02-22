@@ -21,7 +21,7 @@ map_client = googlemaps.Client(key=config.key)
 
 
 def sort_key(x):
-    return float(x['distance'][:-2])
+    return float(str(x['distance']).replace(',','')[:-2])
 
 
 #################
