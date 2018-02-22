@@ -9,8 +9,7 @@ body{
 .navbar{
     list-style-type: none;
     margin: 0;
-    color: white;
-    background-color: #00000078;
+    background: #8BC34A;
 }
 .navbar a img{
     width: 50%;
@@ -40,6 +39,7 @@ body{
 }
 .content{
     display: inline-block;
+    width:75%;
 }
 .item{
     /*width: 100vw;*/
@@ -153,6 +153,7 @@ body{
     height: 30vh;
     background-color: black;
     color: white;
+    padding: 1em;
 }
 .footer{
     display: flex;
