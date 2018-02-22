@@ -31,6 +31,12 @@
     <input type="search" id="search" placeholder="Find campaigns near you.." />
     <span class="icon" id="closesearch"><i class="fa fa-search"></i></span>
 </div>
+<div id="map"></div>
+        <form id="location" action= {% url 'get_nearest_locations' %} method="post" onsubmit="return search();">
+            {% csrf_token %}
+            <input type="text" style="display: none" name="latitude" id="lat">
+            <input type="text" style="display: none" name="longitude" id="long">
+        </form>
 <div class="search-results">
     <h4>Search Results</h4>
 
@@ -44,3 +50,5 @@
 
 </div>
 </body>
+<script src="{% static 'wisdom/js/map.js' %}"></script>
+</html>
