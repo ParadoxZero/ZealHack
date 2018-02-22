@@ -1,11 +1,19 @@
 from datetime import datetime
 
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
 
 from wisdom.models import *
+
+initiative_slug = {
+    'health': Service.Initiatives.HEALTHCARE,
+    'social-service': Service.Initiatives.SOCIAL_SERVICE,
+    'education': Service.Initiatives.EDUCATION,
+    'emergency-services': Service.Initiatives.EMERGENCY_RESPONSE,
+    'infrastructure': Service.Initiatives.INFRASTRUCTURE
+}
 
 
 #################
@@ -90,4 +98,17 @@ class ServiceDetails(TemplateView):
         location_list = Location.objects.filter(service=service)
         context['service'] = service
         context['location_list'] = location_list
+        return context
+
+
+class InitiativeServiceList(TemplateView):
+    template_name = 'wisdom/initiative_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(InitiativeServiceList, self).get_context_data(**kwargs)
+        try:
+            service_list = Service.objects.filter(initiative=initiative_slug[kwargs['initiative_slug']])
+        except KeyError:
+            raise Http404
+        context['service_list'] = service_list
         return context

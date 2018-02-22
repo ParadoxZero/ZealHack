@@ -10,5 +10,6 @@ urlpatterns = [
     path('api/post/review', views.post_review, name="post_review"),
 
     path('initiatives/<slug:slug>', views.ServiceDetails.as_view(), name="service_details"),
+    path('<slug:initiative_slug>', views.InitiativeServiceList.as_view(), name="initiative_service_list"),
     path('', views.Index.as_view(), name='index')
 ]

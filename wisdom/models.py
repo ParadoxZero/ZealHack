@@ -6,14 +6,19 @@ TIME_FORMAT = '%d/%m/%Y %H:%M:%S'
 
 class Service(models.Model):
     class Initiatives:
-        WASTE_MANAGEMENT = 'w'
+        SOCIAL_SERVICE = 'w'
         EDUCATION = 'e'
         HEALTHCARE = 'h'
+        INFRASTRUCTURE = 'i'
+        EMERGENCY_RESPONSE = "r"
 
         CHOICES = (
-            (WASTE_MANAGEMENT,"Waste Management"),
+            (SOCIAL_SERVICE,"Social Service"),
             (EDUCATION,"Education"),
-            (HEALTHCARE,"Healthcare")
+            (HEALTHCARE,"Healthcare"),
+            (INFRASTRUCTURE, "Infrastructure"),
+            (EMERGENCY_RESPONSE, "Emergency Response")
+
         )
 
     initiative = models.CharField(choices=Initiatives.CHOICES, max_length=10)
