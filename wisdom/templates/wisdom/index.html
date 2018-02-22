@@ -12,6 +12,10 @@
     <title>Wisdom Initiatives</title>
 </head>
 <body>
+<div class="preloader"><span class="preloader-gif">
+    <img src="{% static 'wisdom/img/wisdomstraight.png' %}" alt="">
+    <span id="insights">Insights</span>
+</span></div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand"  href="/"><img src= {% static "wisdom/img/wisdomstraight.png" %}></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -185,8 +189,10 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="{% static  'wisdom/my.js' %}"></script>
 <script src="{% static 'wisdom/js/map.js' %}"></script>
@@ -194,6 +200,9 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUDhC1Edx-S5oUQmr8u9m7rr0ul5bXG3M&libraries=places&callback=initAutocomplete"
         async defer></script>
 </body>
+<script>
+{#    $('.preloader')[0].style.display = 'none';#}
+</script>
 </html>
 
 <!--{{ notifications }}-->

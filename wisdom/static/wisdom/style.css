@@ -5,7 +5,44 @@ body{
     width: 100vw;
     height: 100vh;
 }
+.preloader{
+    position: fixed;
+    top:0;
+    left:0;
+    bottom: 0;
+    right: 0;
+    background-color: #2c3e50;
+    z-index: 99999;
 
+}
+.preloader #insights{
+    right: 0;
+    position: absolute;
+    color: lightgreen;
+    font-size: 1.5em;
+    transform: scale(0);
+    animation: animate-zoom 0.5s;
+    animation-delay: 0.4s;
+    animation-fill-mode: forwards;
+}
+@keyframes animate-zoom {
+    0% {
+        transform: scale(0);
+    }
+    95%{
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+.preloader .preloader-gif{
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    margin: -40px 0 0 -40px;
+}
 .navbar{
     list-style-type: none;
     margin: 0;
