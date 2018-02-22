@@ -81,10 +81,11 @@
             <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
             <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
         </fieldset>
-
+        <div class="showRating">
+            <a href="#openModal">Show current average rating</a>
+        </div>
         <textarea name="comment" id="comment" cols="40" rows="5" placeholder="Enter your comments"></textarea>
         <input type="submit">
-
     </form>
 </div>
 <div class="section-5">
@@ -108,6 +109,21 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+        <div id="openModal" class="modalDialog">
+            <div class="content">
+                <a href="#close" title="Close" class="close">X</a>
+
+                    <h4>Current Average rating for {{ service.name }}</h4>
+                    {% for i in location_list %}
+                        <h6>{{ i.location.name }} : {{ i.average_rating }}</h6>
+                    {% endfor %}
+            </div>
+        </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
