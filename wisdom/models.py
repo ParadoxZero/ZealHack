@@ -66,6 +66,7 @@ class Rating(models.Model):
             review=request.POST['review']
         )
         rating.save()
+        return rating
 
 
 class Notifications(models.Model):

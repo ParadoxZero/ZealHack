@@ -44,6 +44,7 @@
             <div class="card">
             <h5>Location : <b>{{ i.location.name }}</b> </h5>
             <h5>Distance : <b>{{ i.distance }}</b></h5>
+            <h5>Rating: {% if i.average_rating  %} {{ i.average_rating }} {% else %} Unavailable {% endif %}</h5>
             <a href="{% url 'service_details'  i.location.service.slug %}"> Link to the service</a>
             </div>
         {% endfor %}

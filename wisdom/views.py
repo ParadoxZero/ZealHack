@@ -1,13 +1,16 @@
 from datetime import datetime
 import googlemaps
 
-from django.http import JsonResponse, Http404
+from django.http import JsonResponse, Http404, HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
 
 import config
 from wisdom.models import *
+
+BASE_URL = "127.0.0.1:8080"
 
 initiative_slug = {
     'health': Service.Initiatives.HEALTHCARE,
@@ -77,10 +80,8 @@ def get_service(request, id):
 
 
 def post_review(request):
-    Rating.create_rating(request)
-    return JsonResponse(data={
-        'status': 'ok'
-    })
+    r = Rating.create_rating(request)
+    return HttpResponseRedirect(BASE_URL + reverse('service_details',args=[r.location.service.slug]))
 
 
 def get_nearest_locations(request):
@@ -97,12 +98,16 @@ def get_nearest_locations(request):
         context.append({
             'location': location_list[i],
             'distance': result['rows'][0]['elements'][i]['distance']['text'],
-            'coordinates': [location_list[i].latitude, location_list[i].longitude]
+            'coordinates': [location_list[i].latitude, location_list[i].longitude],
+            'average_rating': (lambda x: ((sum(x) / len(x)) if len(x) != 0 else None))(
+                               [j.rating for j in Rating.objects.filter(location=location_list[i])])
+
         })
     context.sort(key=sort_key)
     return render(request,"wisdom/search_results.html",{
         "status": 'ok',
-        'locations': context[:10]
+        'locations': context[:10],
+        "base_url":BASE_URL
     })
 
 
@@ -118,7 +123,9 @@ def get_nearest_locations_service(request, slug):
         context.append({
             'name': location_list[i].name,
             'distance': result['rows'][0]['elements'][i]['distance']['text'],
-            'coordinates': [location_list[i].latitude, location_list[i].longitude]
+            'coordinates': [location_list[i].latitude, location_list[i].longitude],
+            'average_rating': (lambda x: ((sum(x) / len(x)) if len(x) != 0 else None))(
+                [j.rating for j in Rating.objects.filter(location=location_list[i])])
         })
     context.sort(key=sort_key)
     return JsonResponse(data={
