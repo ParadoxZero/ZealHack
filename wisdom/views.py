@@ -79,3 +79,15 @@ class Index(TemplateView):
         context['notifications'] = [i for i in Notifications.get_latest_notifications()]
         context['services'] = [i for i in Service.objects.all()]
         return context
+
+
+class ServiceDetails(TemplateView):
+    template_name = 'wisdom/service_details.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ServiceDetails, self).get_context_data(**kwargs)
+        service = Service.objects.get(slug=kwargs['slug'])
+        location_list = Location.objects.filter(service=service)
+        context['service'] = service
+        context['location_list'] = location_list
+        return context

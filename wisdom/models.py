@@ -5,9 +5,22 @@ TIME_FORMAT = '%d/%m/%Y %H:%M:%S'
 
 
 class Service(models.Model):
+    class Initiatives:
+        WASTE_MANAGEMENT = 'w'
+        EDUCATION = 'e'
+        HEALTHCARE = 'h'
+
+        CHOICES = (
+            (WASTE_MANAGEMENT,"Waste Management"),
+            (EDUCATION,"Education"),
+            (HEALTHCARE,"Healthcare")
+        )
+
+    initiative = models.CharField(choices=Initiatives.CHOICES, max_length=10)
     name = models.CharField(max_length=255)
     description = models.TextField()
     image = models.ImageField()
+    slug = models.SlugField()
 
     def __str__(self):
         return self.name
@@ -48,6 +61,7 @@ class Rating(models.Model):
 
 class Notifications(models.Model):
     date = models.DateTimeField()
+    title = models.CharField(max_length=50)
     text = models.CharField(max_length=500)
     url = models.URLField()
 

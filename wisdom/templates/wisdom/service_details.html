@@ -1,0 +1,7 @@
+{{ service.name }}
+{{ service.description }}
+<img src = "{{ service.image }}">
+
+{% for i in locations %}
+{{ i.name }} <br>
+{% endfor %}
