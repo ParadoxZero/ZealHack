@@ -103,7 +103,9 @@
 </body>
 </html>
 
-
+{% for i in image_list %}
+    <img src="{{ i.image.url }}">
+{% endfor %}
 
 {##}
 {##}
