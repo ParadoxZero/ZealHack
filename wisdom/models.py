@@ -9,6 +9,9 @@ class Service(models.Model):
     description = models.TextField()
     image = models.ImageField()
 
+    def __str__(self):
+        return self.name
+
 
 class Location(models.Model):
     name = models.CharField(max_length=255)
@@ -17,12 +20,20 @@ class Location(models.Model):
     longitude = models.CharField(max_length=255)
     latitude = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
+
 
 class Rating(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField()
     rating = models.DecimalField(max_digits=1, decimal_places=0)
     review = models.TextField()
+
+    location = models.ForeignKey(Location)
+
+    def __str__(self):
+        return self.email
 
     @staticmethod
     def create_rating(request):
@@ -39,6 +50,9 @@ class Notifications(models.Model):
     date = models.DateTimeField()
     text = models.CharField(max_length=500)
     url = models.URLField()
+
+    def __str__(self):
+        return self.date.strftime(TIME_FORMAT) + " : " + self.text
 
     @staticmethod
     def get_latest_notifications(request):
