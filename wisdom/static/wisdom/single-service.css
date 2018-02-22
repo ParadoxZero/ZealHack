@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+body{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+/*Navbar*/
+.navbar{
+    list-style-type: none;
+    margin: 0;
+    background-color: #09262C;
+    color: white;
+}
+.navbar span img{
+    width: 50%;
+}
+.ham{
+    padding-right: 1em;
+}
+/*section-1*/
+.section-1{
+    color:black;
+    font-family: 'Oswald', sans-serif;
+
+}
+.section-1 h3{
+    padding: 1em 0 0.5em 1em ;
+}
+.carousel-img{
+    width: 100% ;
+    transition: 0.35s ease-in;
+}
+.carousel-caption{
+    display: none;
+    color:black;
+}
+.carousel-caption p{
+    font-size: medium;
+}
+/*Section 2*/
+.section-2{
+    font-size: 1.5em;
+    padding: 1em 0.5em;
+    background-color: #d1d1d169;
+    box-shadow: 0 0 7px #0000004f;
+}
+.section-2 span{
+    position: absolute;
+    right: 20px;
+
+}
+.section-2 p{
+    text-align: center;
+    font-size: 0.8em;
+
+}
+/*Section -3 */
+.section-3{
+    padding: 1em;
+}
+/*section-4*/
+.section-4{
+    padding: 1em;
+    background-color: #c7c7c745;
+}
+form input{
+    background: none;
+    padding: 0.2em 1em 0.2em 0.5em;
+    width: 90%;
+    border: none;
+    border-bottom: 2px solid #8080804d;
+    margin: 1em 0;
+}
+form input:active ,
+form input:focus ,
+form textarea:active,
+form textarea:focus{
+    outline: none;
+    border-bottom: 2px solid #6379f6;
+}
+form select{
+    padding: 0.5em 0.5em 0.5em 1em;
+    width: 90%;
+    border-radius: 5px;
+}
+form select:focus{
+    border: none;
+}
+form textarea{
+    background: no-repeat;
+    border: none;
+    border-bottom: 2px solid #8080804d;
+    margin-top: 0.5em;
+}
+input[type=submit]{
+    background-color: #6379f6;
+    padding: 0.7em;
+    border-radius: 10px;
+    color: white;
+}
+/*Section-5 footer*/
+.section-5{
+    height: 30vh;
+    background-color: black;
+    color: white;
+    padding: 2em 0;
+}
+.footer{
+    display: flex;
+}
+.section-5 h5{
+    text-align: center;
+
+}
+.footer .colomn-1 , .footer .colomn-2{
+    width: 45vw;
+    display: inline-block;
+}
+.footer ul p{
+    font-style: italic;
+    color: #4f5b66;
+    font-size: 0.7em;
+}
+.footer ul li{
+    font-size: 0.7em;
+    cursor: pointer;
+}
