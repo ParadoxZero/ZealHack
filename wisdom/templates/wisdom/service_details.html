@@ -30,9 +30,15 @@
         <h3>{{ service.name }}</h3>
         <div class="searchbox">
             <span class="icon"><i class="fa fa-search"></i></span>
-            <input type="search" id="search" placeholder="Find {{ service.name }} near you..." />
+            <input type="search" id="search" placeholder="Find {{ service.name }} near you.." />
             <span class="icon" id="closesearch"><i class="fa fa-search"></i></span>
         </div>
+        <div id="map"></div>
+        <form id="location" action= {% url 'get_nearest_location_service' service.slug %} method="post" onsubmit="return search();">
+            {% csrf_token %}
+            <input type="text" style="display: none" name="latitude" id="lat">
+            <input type="text" style="display: none" name="longitude" id="long">
+        </form>
     </div>
     <div class="imgs">
         <div id="zeal-highlights" class="carousel slide" data-ride="carousel">
