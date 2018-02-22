@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+body{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+/*Navbar*/
+.navbar{
+    list-style-type: none;
+    margin: 0;
+    background-color: #09262C;
+    color: white;
+}
+.navbar span img{
+    width: 50%;
+}
+.ham{
+    padding-right: 1em;
+}
+/*section-1*/
+.section-1{
+    padding-bottom:2em ;
+}
+.section-1 h3{
+    padding: 1em;
+    font-family: 'Oswald', sans-serif;
+
+}
+.item{
+    height: 30vh;
+}
+.desc{
+    position: absolute;
+    z-index: 1;
+    padding: 2em;
+    font-family: 'Oswald', sans-serif;
+    color: white;
+}
+.desc h5{
+    font-size: 2em;
+}
+.img{
+    width: 91%;
+    position: absolute;
+    height:30.5vh;
+    margin: 1em;
+}
+.main-img{
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    overflow: hidden;
+    margin-left: 2em;
+}
+.back-img{
+    width: 100%;
+    position: absolute;
+
+}
+/*Footer*/
+.section-4{
+    height: 30vh;
+    background-color: black;
+    color: white;
+    padding: 2em 0;
+}
+.footer{
+    display: flex;
+}
+.section-4 h5{
+    text-align: center;
+
+}
+.footer .colomn-1 , .footer .colomn-2{
+    width: 45vw;
+    display: inline-block;
+}
+.footer ul p{
+    font-style: italic;
+    color: #4f5b66;
+    font-size: 0.7em;
+}
+.footer ul li{
+    font-size: 0.7em;
+    cursor: pointer;
+}
