@@ -7,6 +7,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
+from pywebpush import webpush
 
 import config
 from wisdom.models import *
@@ -194,6 +195,8 @@ def save_subscription(request):
     n = NotificationRegistration()
     n.registration_data = request.body
     n.save()
+    print(webpush(subscription_info=data, data="Hello", vapid_private_key="/Users/sidhin/PycharmProjects/wisdomInitiative/private_key.pen",
+            vapid_claims={"sub": "mailto:YourNameHere@example.org", }))
     return JsonResponse({
         'data':{'success': True}
     })
