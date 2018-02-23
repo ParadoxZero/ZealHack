@@ -2,3 +2,4 @@ django
 pillow
 google-api-python-client
 googlemaps
+pywebpush

@@ -87,3 +87,8 @@ class Notifications(models.Model):
     @staticmethod
     def get_latest_notifications(length=10):
         return Notifications.objects.all().order_by('-date')[:length]
+
+
+class NotificationRegistration(models.Model):
+    registration_data = models.CharField(max_length=700)
+

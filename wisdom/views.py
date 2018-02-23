@@ -1,3 +1,4 @@
+import json
 from datetime import datetime
 import googlemaps
 
@@ -24,7 +25,7 @@ map_client = googlemaps.Client(key=config.key)
 
 
 def sort_key(x):
-    return float(str(x['distance']).replace(',','')[:-2])
+    return float(str(x['distance']).replace(',', '')[:-2])
 
 
 #################
@@ -81,7 +82,7 @@ def get_service(request, id):
 
 def post_review(request):
     r = Rating.create_rating(request)
-    return HttpResponseRedirect(BASE_URL + reverse('service_details',args=[r.location.service.slug]))
+    return HttpResponseRedirect(BASE_URL + reverse('service_details', args=[r.location.service.slug]))
 
 
 def get_nearest_locations(request):
@@ -90,7 +91,7 @@ def get_nearest_locations(request):
 
     location_list = Location.objects.all()
     destination_list = [[i.longitude, i.latitude] for i in location_list]
-    print(latitude,longitude,destination_list)
+    print(latitude, longitude, destination_list)
     result = map_client.distance_matrix(origins=[[longitude, latitude], ], destinations=destination_list)
     print(result['rows'][0]['elements'])
     context = []
@@ -100,14 +101,14 @@ def get_nearest_locations(request):
             'distance': result['rows'][0]['elements'][i]['distance']['text'],
             'coordinates': [location_list[i].latitude, location_list[i].longitude],
             'average_rating': (lambda x: ((sum(x) / len(x)) if len(x) != 0 else None))(
-                               [j.rating for j in Rating.objects.filter(location=location_list[i])])
+                [j.rating for j in Rating.objects.filter(location=location_list[i])])
 
         })
     context.sort(key=sort_key)
-    return render(request,"wisdom/search_results.html",{
+    return render(request, "wisdom/search_results.html", {
         "status": 'ok',
         'locations': context[:10],
-        "base_url":BASE_URL
+        "base_url": BASE_URL
     })
 
 
@@ -184,3 +185,15 @@ class InitiativeServiceList(TemplateView):
             'images': [j for j in ServiceImage.objects.filter(service=i)]
         } for i in service_list]
         return context
+
+
+@csrf_exempt
+def save_subscription(request):
+    data = json.loads(request.body)
+    print(request.body)
+    n = NotificationRegistration()
+    n.registration_data = request.body
+    n.save()
+    return JsonResponse({
+        'data':{'success': True}
+    })

@@ -79,6 +79,7 @@ function sendSubscriptionToBackEnd(subscription) {
     return response.json();
   })
   .then(function(responseData) {
+    console.log(responseData)
     if (!(responseData.data && responseData.data.success)) {
       throw new Error('Bad response from server.');
     }
