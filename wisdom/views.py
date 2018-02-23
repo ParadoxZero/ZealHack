@@ -98,14 +98,20 @@ def get_nearest_locations(request):
             'location': location_list[i],
             'distance': result['rows'][0]['elements'][i]['distance']['text'],
             'coordinates': [location_list[i].latitude, location_list[i].longitude],
-            'average_rating': (lambda x: ((float(sum(x)) / float(len(x))) if len(x) != 0 else None))(
+            'average_rating': (lambda x: (str(float(sum(x)) / float(len(x)))[:3] if len(x) != 0 else None))(
                 [j.rating for j in Rating.objects.filter(location=location_list[i])])
 
         })
     context.sort(key=sort_key)
+    top = 0
+    for i in range(len(context)):
+        if sort_key(context[i]) > 40.0 or top==10:
+            break
+        else:
+            top = top+1
     return render(request, "wisdom/search_results.html", {
         "status": 'ok',
-        'locations': context[:10],
+        'locations': context[:top],
         "base_url": BASE_URL
     })
 
@@ -123,13 +129,19 @@ def get_nearest_locations_service(request, slug):
             'name': location_list[i].name,
             'distance': result['rows'][0]['elements'][i]['distance']['text'],
             'coordinates': [location_list[i].latitude, location_list[i].longitude],
-            'average_rating': (lambda x: ((float(sum(x)) / float(len(x))) if len(x) != 0 else None))(
+            'average_rating': (lambda x: (str(float(sum(x)) / float(len(x)))[:3] if len(x) != 0 else None))(
                 [j.rating for j in Rating.objects.filter(location=location_list[i])])
         })
     context.sort(key=sort_key)
+    top = 0
+    for i in range(len(context)):
+        if sort_key(context[i]) > 20.0 or top == 10:
+            break
+        else:
+            top = i
     return JsonResponse(data={
         "status": 'ok',
-        'locations': context[:10]
+        'locations': context[:top]
     })
 
 
@@ -161,7 +173,7 @@ class ServiceDetails(TemplateView):
         context['service'] = service
         context['location_list'] = [{
             'location': i,
-            'average_rating': (lambda x: ((float(sum(x)) / float(len(x))) if len(x) != 0 else None))(
+            'average_rating': (lambda x: (str(float(sum(x)) / float(len(x)))[:3] if len(x) != 0 else None))(
                 [j.rating for j in Rating.objects.filter(location=i)])
         } for i in location_list]
         context['image_list'] = image_list
