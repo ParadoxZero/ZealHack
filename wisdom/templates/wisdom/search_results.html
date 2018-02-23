@@ -47,7 +47,7 @@
             <h5>Location : <b>{{ i.location.name }}</b> </h5>
             <h5>Distance : <b>{{ i.distance }}</b></h5>
             <h5>Rating: {% if i.average_rating  %} {{ i.average_rating }} {% else %} Unavailable {% endif %}</h5>
-            <a href="{% url 'service_details'  i.location.service.slug %}"> Link to the service</a>
+            <a href="http://maps.google.com/maps?saddr={{ saddr.0 }},{{ saddr.1 }}&daddr={{ i.coordinates.1 }},{{ i.coordinates.0 }}"> Navigate to location</a>
             </div>
         {% endfor %}
 

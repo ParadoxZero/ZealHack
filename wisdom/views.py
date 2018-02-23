@@ -112,7 +112,8 @@ def get_nearest_locations(request):
     return render(request, "wisdom/search_results.html", {
         "status": 'ok',
         'locations': context[:top],
-        "base_url": BASE_URL
+        "base_url": BASE_URL,
+        "saddr": (longitude, latitude)
     })
 
 
