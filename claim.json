@@ -1,0 +1,4 @@
+{
+        "sub": "mailto: development@example.com",
+        "aud": "https://android.googleapis.com/gcm/send"
+}

@@ -8,11 +8,11 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
 from pywebpush import webpush
-
+from push_notifications.models import WebPushDevice
 import config
 from wisdom.models import *
 
-BASE_URL = "127.0.0.1:8080"
+BASE_URL = "http://localhost:8000"
 
 initiative_slug = {
     'health': Service.Initiatives.HEALTHCARE,
@@ -101,7 +101,7 @@ def get_nearest_locations(request):
             'location': location_list[i],
             'distance': result['rows'][0]['elements'][i]['distance']['text'],
             'coordinates': [location_list[i].latitude, location_list[i].longitude],
-            'average_rating': (lambda x: ((sum(x) / len(x)) if len(x) != 0 else None))(
+            'average_rating': (lambda x: ((float(sum(x)) / float(len(x))) if len(x) != 0 else None))(
                 [j.rating for j in Rating.objects.filter(location=location_list[i])])
 
         })
@@ -126,7 +126,7 @@ def get_nearest_locations_service(request, slug):
             'name': location_list[i].name,
             'distance': result['rows'][0]['elements'][i]['distance']['text'],
             'coordinates': [location_list[i].latitude, location_list[i].longitude],
-            'average_rating': (lambda x: ((sum(x) / len(x)) if len(x) != 0 else None))(
+            'average_rating': (lambda x: ((float(sum(x)) / float(len(x))) if len(x) != 0 else None))(
                 [j.rating for j in Rating.objects.filter(location=location_list[i])])
         })
     context.sort(key=sort_key)
@@ -164,7 +164,7 @@ class ServiceDetails(TemplateView):
         context['service'] = service
         context['location_list'] = [{
             'location': i,
-            'average_rating': (lambda x: ((sum(x) / len(x)) if len(x) != 0 else None))(
+            'average_rating': (lambda x: ((float(sum(x)) / float(len(x))) if len(x) != 0 else None))(
                 [j.rating for j in Rating.objects.filter(location=i)])
         } for i in location_list]
         context['image_list'] = image_list
@@ -195,8 +195,9 @@ def save_subscription(request):
     n = NotificationRegistration()
     n.registration_data = request.body
     n.save()
-    print(webpush(subscription_info=data, data="Hello", vapid_private_key="/Users/sidhin/PycharmProjects/wisdomInitiative/private_key.pen",
-            vapid_claims={"sub": "mailto:YourNameHere@example.org", }))
+    print(webpush(subscription_info=data, data="Hello", vapid_private_key=config.serverkey,
+                  vapid_claims={"sub": "mailto:me@sidhin.in"}
+                  ))
     return JsonResponse({
-        'data':{'success': True}
+        'data': {'success': True}
     })

@@ -51,7 +51,9 @@ function subscribeUserToPush() {
   .then(function(registration) {
     const subscribeOptions = {
       userVisibleOnly: true,
-      applicationServerKey: 'MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEy3zBQ9SSqiVKpAW9H76RHmsiuzrh0Db5PV8BqCoU2Q7o7sYSjCIWqCRUFZ3fJykkPM1HkLH7qeqkn1gjAk+20Q=='
+      applicationServerKey: urlBase64ToUint8Array(
+          'BF3vj-4wf9Bk4OepRlGHdcLHyOmPC2E-ETNOPvz0xPAc2U430ORiUeeyw3FWIXMpZ0VsP2Ea5VAxbYP11aGillA'
+      )
 
     };
 

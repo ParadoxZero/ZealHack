@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'wisdom.apps.WisdomConfig',
+    'push_notifications'
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,14 @@ MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+PUSH_NOTIFICATIONS_SETTINGS = {
+        "FCM_API_KEY": "",
+        #"GCM_API_KEY": "[your api key]",
+        # #"APNS_CERTIFICATE": "/path/to/your/certificate.pem",
+        # "APNS_TOPIC": "com.example.push_test",
+        # "WNS_PACKAGE_SECURITY_ID": "[your package security id, e.g: 'ms-app://e-3-4-6234...']",
+        # "WNS_SECRET_KEY": "[your app secret key, e.g.: 'KDiejnLKDUWodsjmewuSZkk']",
+        "WP_PRIVATE_KEY": "XCTuYEBqM_8YVrrz8Ag_HgtUAuneCdUs05BcB7rD8fw",
+        "WP_CLAIMS": {'sub': "mailto: development@sidhin.in"}
+}

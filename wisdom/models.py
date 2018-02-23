@@ -63,7 +63,8 @@ class Rating(models.Model):
             name=request.POST['name'],
             email=request.POST['email'],
             rating=request.POST['rating'],
-            review=request.POST['review']
+            review=request.POST['review'],
+            location_id=request.POST['location']
         )
         rating.save()
         return rating

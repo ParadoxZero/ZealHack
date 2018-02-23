@@ -79,12 +79,13 @@
 </div>
 <div class="section-4">
     <h4>Review our system</h4>
-    <form action="#" method="post">
+    <form action="{% url 'post_review' %}" method="post">
+    {% csrf_token %}
         <input type="text" name="name" placeholder="Enter your name">
         <input type="email" name="email" placeholder="Enter your email">
         <select name="location" id="location">
             {% for i in location_list %}
-            <option value="{{ i.location.name }} ">{{ i.location.name }} </option>
+            <option value="{{ i.location.id }} ">{{ i.location.name }} </option>
             {% endfor %}
         </select>
         <fieldset class="rating">
@@ -95,7 +96,7 @@
             <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
             <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
         </fieldset>
-        <textarea name="comment" id="comment" cols="40" rows="5" placeholder="Enter your comments"></textarea>
+        <textarea name="review" id="review" cols="40" rows="5" placeholder="Enter your comments"></textarea>
         <input type="submit">
     </form>
 </div>
