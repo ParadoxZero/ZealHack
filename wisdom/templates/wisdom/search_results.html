@@ -42,6 +42,7 @@
     <h4>Search Results</h4>
 
         {% for i in locations %}
+            <a href="{% url 'service_details'  i.location.service.slug %}">
             <div class="card">
             <h5>{{i.location.service.name}}</h5>
             <h5>Location : <b>{{ i.location.name }}</b> </h5>
@@ -49,6 +50,7 @@
             <h5>Rating: {% if i.average_rating  %} {{ i.average_rating }} {% else %} Unavailable {% endif %}</h5>
             <a href="http://maps.google.com/maps?saddr={{ saddr.0 }},{{ saddr.1 }}&daddr={{ i.coordinates.1 }},{{ i.coordinates.0 }}"> Navigate to location</a>
             </div>
+            </a>
         {% endfor %}
 
 </div>
