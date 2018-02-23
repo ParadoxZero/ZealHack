@@ -1,5 +1,4 @@
 import json
-from datetime import datetime
 import googlemaps
 
 from django.http import JsonResponse, Http404, HttpResponseRedirect
@@ -7,8 +6,6 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
-from pywebpush import webpush
-from push_notifications.models import WebPushDevice
 import config
 from wisdom.models import *
 
@@ -195,9 +192,9 @@ def save_subscription(request):
     n = NotificationRegistration()
     n.registration_data = request.body
     n.save()
-    print(webpush(subscription_info=data, data="Hello", vapid_private_key=config.serverkey,
-                  vapid_claims={"sub": "mailto:me@sidhin.in"}
-                  ))
+    # print(webpush(subscription_info=data, data="Hello", vapid_private_key=config.serverkey,
+    #               vapid_claims={"sub": "mailto:me@sidhin.in"}
+    #               ))
     return JsonResponse({
         'data': {'success': True}
     })
