@@ -12,7 +12,7 @@ from push_notifications.models import WebPushDevice
 import config
 from wisdom.models import *
 
-BASE_URL = "http://localhost:8000"
+BASE_URL = "http://test.ritu18.com"
 
 initiative_slug = {
     'health': Service.Initiatives.HEALTHCARE,
