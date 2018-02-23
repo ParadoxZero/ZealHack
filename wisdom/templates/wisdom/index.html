@@ -23,10 +23,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="{% url 'initiative_service_list' 'education' %}">Education <span class="sr-only"></span></a>
             <a class="nav-item nav-link active" href="{% url 'initiative_service_list' 'health' %}">Health <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link active" href="{% url 'initiative_service_list' 'social-service' %}">Social-service <span class="sr-only"></span></a>
-            <a class="nav-item nav-link active" href="{% url 'initiative_service_list' 'education' %}">Education <span class="sr-only"></span></a>
             <a class="nav-item nav-link active" href="{% url 'initiative_service_list' 'infrastructure' %}">Infrastructure <span class="sr-only"></span></a>
+{#            <a class="nav-item nav-link active" href="{% url 'emergency-services' 'emergency-services' %}">Emergency-Services <span class="sr-only"></span></a>#}
+
         </div>
     </div>
 </nav>
@@ -40,7 +42,7 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="carousel-img " src = {% static  'wisdom/img/c4.jpg' %} alt="First slide">
+                <img class="carousel-img " src = {% static  'wisdom/img/c1.jpg' %} alt="First slide">
                 <div class="carousel-caption ">
                     <h3>JOIN US NOW</h3>
                     <p>Have you ever thought of spending time in the service of humanity? Do you dream of bringing changes to society? If the answer is “yes”, you are the right person we, at Wisdom, are looking for.</p>
@@ -54,19 +56,27 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="carousel-img " src = {% static  'wisdom/img/c1.jpg' %} alt="Third slide">
+                <img class="carousel-img " src = {% static  'wisdom/img/c3.jpg' %} alt="Third slide">
                 <div class="carousel-caption">
                     <h3>JOIN US NOW</h3>
                     <p>Have you ever thought of spending time in the service of humanity? Do you dream of bringing changes to society? If the answer is “yes”, you are the right person we, at Wisdom, are looking for.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="carousel-img " src =  {% static  'wisdom/img/c3.jpg' %} alt="Third slide">
+                <img class="carousel-img " src =  {% static  'wisdom/img/c4.jpg' %} alt="Third slide">
                 <div class="carousel-caption">
                     <h3>JOIN US NOW</h3>
                     <p>Have you ever thought of spending time in the service of humanity? Do you dream of bringing changes to society? If the answer is “yes”, you are the right person we, at Wisdom, are looking for.</p>
                 </div>
             </div>
+            <div class="carousel-item">
+                <img class="carousel-img " src =  {% static  'wisdom/img/c5.jpg' %} alt="Third slide">
+                <div class="carousel-caption">
+                    <h3>JOIN US NOW</h3>
+                    <p>Have you ever thought of spending time in the service of humanity? Do you dream of bringing changes to society? If the answer is “yes”, you are the right person we, at Wisdom, are looking for.</p>
+                </div>
+            </div>
+
         </div>
         <a class="carousel-control-prev" href="#zeal-highlights" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -174,20 +184,11 @@
             <h5>About us</h5>
             <ul>
                 <p>Be Involved and Contribute your time for a better tomorrow.</p>
-                <li>contact@ritu18.com</li>
-                <li>Call us: +91 9445467323</li>
+                <div><i class="fas fa-envelope"></i><li>contact@ritu18.com</li></div>
+                <div><i class="fas fa-phone"></i><li>Call us: +91 9445467323</li></div>
             </ul>
         </div>
-        <div class="colomn-2">
-            <h5>NewsRoom</h5>
-            <ul>
-                <li>Press Release</li>
-                <li>Official Statements</li>
-                <li>Blog and News</li>
-                <li>Features</li>
-            </ul>
         </div>
-    </div>
 </div>
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"

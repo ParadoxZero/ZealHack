@@ -1,9 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Oswald');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa:400,700');
 body{
     margin: 0;
     padding: 0;
     width: 100vw;
     height: 100vh;
+    font-family: 'Comfortaa', cursive !important;
+
 }
 /*Navbar*/
 .navbar{
@@ -21,7 +23,7 @@ body{
 }
 .section-1 h3{
     padding: 1em;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Comfortaa:700', sans-serif;
 
 }
 .item{
@@ -64,21 +66,30 @@ body{
 }
 .footer{
     display: flex;
+        color: #4f5b66;
+
 }
 .section-4 h5{
     text-align: center;
 
 }
-.footer .colomn-1 , .footer .colomn-2{
-    width: 45vw;
+.footer .colomn-1 {
     display: inline-block;
 }
 .footer ul p{
     font-style: italic;
-    color: #4f5b66;
     font-size: 0.7em;
+}
+ul div{
+    /*text-align: center;*/
 }
 .footer ul li{
     font-size: 0.7em;
     cursor: pointer;
+    display: inline-block;
+    margin: 0 1em 0 0.4em;
+}
+.colomn-1 h5{
+        padding-left: 2em !important;
+    text-align: left;
 }

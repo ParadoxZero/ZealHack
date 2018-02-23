@@ -18,10 +18,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
+             <a class="nav-item nav-link active" href="{% url 'initiative_service_list' 'education' %}">Education <span class="sr-only"></span></a>
             <a class="nav-item nav-link active" href="{% url 'initiative_service_list' 'health' %}">Health <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link active" href="{% url 'initiative_service_list' 'social-service' %}">Social-service <span class="sr-only"></span></a>
-            <a class="nav-item nav-link active" href="{% url 'initiative_service_list' 'education' %}">Education <span class="sr-only"></span></a>
             <a class="nav-item nav-link active" href="{% url 'initiative_service_list' 'infrastructure' %}">Infrastructure <span class="sr-only"></span></a>
+{#            <a class="nav-item nav-link active" href="{% url 'emergency-services' 'emergency-services' %}">Emergency-Services <span class="sr-only"></span></a>#}
         </div>
     </div>
 </nav>
@@ -106,20 +107,12 @@
             <h5>About us</h5>
             <ul>
                 <p>Be Involved and Contribute your time for a better tomorrow.</p>
-                <li>contact@ritu18.com</li>
-                <li>Call us: +91 9445467323</li>
+                <div><i class="fas fa-envelope"></i><li>contact@ritu18.com</li></div>
+                <div><i class="fas fa-phone"></i><li>Call us: +91 9445467323</li></div>
             </ul>
         </div>
-        <div class="colomn-2">
-            <h5>NewsRoom</h5>
-            <ul>
-                <li>Press Release</li>
-                <li>Official Statements</li>
-                <li>Blog and News</li>
-                <li>Features</li>
-            </ul>
         </div>
-    </div>
+
 </div>
         <div id="openModal" class="modalDialog">
             <div class="content">
